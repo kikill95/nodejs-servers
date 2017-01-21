@@ -14,6 +14,10 @@ app.listen(config.port, config.ip, () => {
     console.log(`Server running at ${config.ip}:${config.port}`);
 });
 
+app.get('/', function(req, res) {
+  res.sendFile(__dirname + '/index.html');
+});
+
 app.use(bodyParser.json());
 
 app.use('/api/v1', food);

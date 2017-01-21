@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Promise example</title>
+    <script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <h1>Open your console</h1>
+    <script>
+      // we can use 'promises'
+
+      asyncRequest()
+        .then(data3handler)
+        .then(asyncRequest)
+        .then(data => {
+          console.log('result', data);
+        })
+        .catch(catcher);
+
+      function asyncRequest() {
+        return $.get('http://localhost:3000/api/v1/foods')
+          .then(data1handler)
+          .then(data2handler);
+      }
+
+      function data1handler(data1) {
+        console.log('data1handler', data1);
+        data1.testValue1 = 1;
+        return data1;
+      }
+      function data2handler(data2) {
+        data2.testValue2 = 2;
+        console.log('data2handler', data2);
+        return data2;
+      }
+      function data3handler(data3) {
+        return asyncRequest();
+      }
+      function catcher(err) {
+        console.warn('catcher', err);
+      }
+
+      // we can create our own promises
+      var promised = new Promise((resolve, reject) => {
+        asyncRequest()
+          .then(dataInThePromise => {
+            console.log('dataInThePromise', dataInThePromise);
+            resolve(dataInThePromise);
+          })
+          .catch(errorInThePromsie => {
+            reject('My custom error');
+          });
+      })
+        .then(resultFromPromise => {
+          console.log('resultFromPromise', resultFromPromise);
+          return resultFromPromise;
+        })
+        .catch(errorFromPromise => {
+          console.log('errorFromPromise', errorFromPromise);
+        });
+
+      promised
+        .then(data => {
+          console.warn('Finished');
+        });
+
+      // we can group promises
+      Promise.all([ // array of promises
+        asyncRequest(),
+        asyncRequest()
+      ])
+        .then(result => {
+          console.log('Promise.all result', result);
+        })
+        .catch(err => {
+          console.log('Promise.all err', err);
+        });
+    </script>
+  </body>
+</html>
