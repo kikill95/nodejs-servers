@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
 const foodSchema = new mongoose.Schema({
-    name: String
-});
+  name: String
+})
 
-module.exports = mongoose.model('Food', foodSchema);
+module.exports = mongoose.model('Food', foodSchema)

@@ -1,28 +1,27 @@
-'use strict';
+'use strict'
 
-const express = require('express'),
+const express = require('express')
 
-    Food = require('./model'),
+const Food = require('./model')
 
-    router = express.Router();
+const router = express.Router()
 
 router.get('/foods', (req, res, next) => {
-
-    Food.find({})
+  Food.find({})
         .then(foods => {
-            res.json({foods});
+          res.json({foods})
         })
-        .catch(next);
-});
+        .catch(next)
+})
 
 router.post('/foods', (req, res, next) => {
-    new Food(req.body.food)
+  new Food(req.body.food)
         .save()
         .then(food => {
-            console.log(food);
-            res.json({food});
+          console.log(food)
+          res.json({food})
         })
-        .catch(next);
-});
+        .catch(next)
+})
 
-module.exports = router;
+module.exports = router

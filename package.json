@@ -1,12 +1,14 @@
 {
   "name": "node_servers",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --debug express/app.js"
+    "start": "nodemon --debug express/app.js",
+    "test": "standard",
+    "test:fix": "standard --fix"
   },
-  "author": "",
+  "author": "Light <kirill.gusyatin@ekreative.com>",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.2",
@@ -15,6 +17,8 @@
     "socket.io": "^1.7.2"
   },
   "devDependencies": {
-    "nodemon": "^1.11.0"
-  }
+    "nodemon": "^1.11.0",
+    "standard": "^10.0.2"
+  },
+  "repository": "git@github.com:kikill95/nodejs-servers.git"
 }

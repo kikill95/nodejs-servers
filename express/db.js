@@ -1,19 +1,19 @@
-'use strict';
+'use strict'
 
-const mongoose = require('mongoose'),
+const mongoose = require('mongoose')
 
-    config = require('./config');
+const config = require('./config')
 
 mongoose.connect(config.mongoUrl, err => {
-    if (err) throw err;
-});
+  if (err) throw err
+})
 
 process.on('SIGINT', () => {
-    mongoose.disconnect()
+  mongoose.disconnect()
         .then(() => {
-            console.log('Disconnected');
-            process.exit();
-        });
-});
+          console.log('Disconnected')
+          process.exit()
+        })
+})
 
-module.exports = mongoose;
+module.exports = mongoose
