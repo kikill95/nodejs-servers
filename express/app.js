@@ -1,5 +1,3 @@
-'use strict'
-
 const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
@@ -11,8 +9,13 @@ const food = require('./foods/food')
 
 require('./db')
 
-app.listen(config.ip, () => {
+app.listen(config.port, () => {
   console.log(`Server running at port: ${config.port}`)
+})
+
+// added for development
+app.get('/favicon.ico', function(req, res) {
+  res.status(204)
 })
 
 app.get('/', function (req, res) {

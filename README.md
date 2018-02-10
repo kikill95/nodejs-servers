@@ -8,7 +8,9 @@
 
 ## Express
 
-    npm start
+    npm run server
+
+Do not forget to start the mongod
 
 ## Socket
 

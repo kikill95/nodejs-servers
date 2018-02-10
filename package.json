@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --debug express/app.js",
+    "server": "nodemon --inspect express/app.js",
     "test": "standard",
     "test:fix": "standard --fix"
   },
