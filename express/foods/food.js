@@ -5,7 +5,7 @@ const Food = require('./model')
 const router = express.Router()
 
 router.get('/foods', (req, res, next) => {
-  Food.find({})
+  Food.find({}, 'name')
     .then(foods => {
       res.json({foods})
     })
