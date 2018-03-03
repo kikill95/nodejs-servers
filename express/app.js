@@ -9,12 +9,14 @@ const food = require('./foods/food')
 
 require('./db')
 
+require('./lib/streams') // play with streams
+
 app.listen(config.port, () => {
   console.log(`Server running at port: ${config.port}`)
 })
 
 // added for development
-app.get('/favicon.ico', function(req, res) {
+app.get('/favicon.ico', function (req, res) {
   res.status(204)
 })
 
